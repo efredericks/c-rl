@@ -12,6 +12,7 @@ Entity **createItems(void)
         Entity *item = createItem(p, itemID);
         items[i] = item;
     }
+    TOTAL_ITEMS = MAX_ITEMS;
 
     return items;
 }

@@ -27,7 +27,7 @@ void makeFOV(Entity *player)
         }
     }
     
-    for (int i = 0; i < MAX_ITEMS; i++)
+    for (int i = 0; i < TOTAL_ITEMS; i++)
     {
         distance = getDistance(player->pos, items[i]->pos);
         if (distance < player->FOVRadius)
@@ -54,7 +54,7 @@ void clearFOV(Entity *player)
         }
     }
 
-    for (int i = 0; i < MAX_ITEMS; i++)
+    for (int i = 0; i < TOTAL_ITEMS; i++)
     {
         items[i]->visible = false;
     }

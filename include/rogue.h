@@ -75,6 +75,8 @@ void drawEverything(void);
 Entity *createPlayer(Position start_pos);
 void handleInput(int input);
 void movePlayer(Position newPos);
+void handlePickup(Position pos);
+void removeItem(int idx);
 
 // items.c things
 Entity **createItems(void);
@@ -101,6 +103,7 @@ extern Entity *player;
 extern const int MAP_HEIGHT;
 extern const int MAP_WIDTH;
 extern const int MAX_ITEMS;
+extern int TOTAL_ITEMS;
 extern Tile **map;
 extern Entity **items;
 

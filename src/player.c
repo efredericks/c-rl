@@ -50,11 +50,42 @@ void handleInput(int input)
         newPos.y++;
         break;
 
+    case ',':
+        handlePickup(player->pos);
+        break;
+
     default:
         break;
     }
 
     movePlayer(newPos);
+}
+
+void handlePickup(Position pos)
+{
+    // iterate from end of list as they may be stacked 
+    for (int i = TOTAL_ITEMS - 1; i >= 0; --i)
+    {
+        if ((pos.x == items[i]->pos.x) && (pos.y == items[i]->pos.y))
+        {
+            items[i]->ch = '~';
+            removeItem(i);
+        }
+    }
+}
+
+void removeItem(int idx)
+{
+    if ((idx < 0) || (idx > MAX_ITEMS - 1))
+        return;
+    else
+    {
+        for (int i = idx; i < MAX_ITEMS - 1; i++)
+        {
+            items[i] = items[i + 1];
+        }
+        --TOTAL_ITEMS;
+    }
 }
 
 void movePlayer(Position newPos)

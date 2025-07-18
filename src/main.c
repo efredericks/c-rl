@@ -7,6 +7,7 @@
 const int MAP_HEIGHT = 25;
 const int MAP_WIDTH = 100;
 const int MAX_ITEMS = 10;
+int TOTAL_ITEMS = 0;
 
 Entity *player;
 Tile **map;
