@@ -14,6 +14,8 @@ bool cursesSetup(void)
         init_pair(SEEN_COLOR, COLOR_CYAN, COLOR_BLACK);
         init_pair(VISIBLE_ITEM_COLOR, COLOR_YELLOW, COLOR_BLACK);
         init_pair(SEEN_ITEM_COLOR, COLOR_MAGENTA, COLOR_BLACK);
+        init_pair(UI_LABEL_COLOR, COLOR_WHITE, COLOR_BLACK);
+        init_pair(UI_VALUE_COLOR, COLOR_YELLOW, COLOR_BLACK);
 
         return true;
     }

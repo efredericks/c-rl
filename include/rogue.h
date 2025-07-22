@@ -6,12 +6,15 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <string.h>
 
 // colors
 #define VISIBLE_COLOR 1
 #define SEEN_COLOR 2
 #define VISIBLE_ITEM_COLOR 3
 #define SEEN_ITEM_COLOR 4
+#define UI_LABEL_COLOR 5
+#define UI_VALUE_COLOR 6
 
 typedef struct
 {
@@ -27,6 +30,8 @@ typedef struct
     int FOVRadius;
     bool visible;
     bool seen;
+    int HP;
+    int maxHP;
 } Entity;
 
 typedef struct
@@ -70,6 +75,7 @@ Position getOpenCell(void);
 void drawMap(void);
 void drawEntity(Entity *entity);
 void drawEverything(void);
+void drawUI(void);
 
 // player.c things
 Entity *createPlayer(Position start_pos);

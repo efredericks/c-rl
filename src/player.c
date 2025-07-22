@@ -11,6 +11,8 @@ Entity *createPlayer(Position start_pos)
     newPlayer->FOVRadius = 15;
     newPlayer->visible = true;
     newPlayer->seen = true;
+    newPlayer->HP = 10;
+    newPlayer->maxHP = 10;
 
     return newPlayer;
 }
@@ -68,18 +70,21 @@ void handlePickup(Position pos)
     {
         if ((pos.x == items[i]->pos.x) && (pos.y == items[i]->pos.y))
         {
+            if (items[i]->ch == 'H') player->HP--;
             items[i]->ch = '~';
             removeItem(i);
         }
     }
 }
 
+// can probably make this a generic
 void removeItem(int idx)
 {
     if ((idx < 0) || (idx > MAX_ITEMS - 1))
         return;
     else
     {
+        free(items[idx]);
         for (int i = idx; i < MAX_ITEMS - 1; i++)
         {
             items[i] = items[i + 1];

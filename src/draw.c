@@ -8,15 +8,15 @@ void drawMap(void)
         {
             if (map[y][x].visible)
             {
-                mvaddch(y, x, map[y][x].ch | map[y][x].color);
+                mvaddch(y+1, x, map[y][x].ch | map[y][x].color);
             }
             else if (map[y][x].seen)
             {
-                mvaddch(y, x, map[y][x].ch | COLOR_PAIR(SEEN_COLOR));
+                mvaddch(y+1, x, map[y][x].ch | COLOR_PAIR(SEEN_COLOR));
             }
             else
             {
-                mvaddch(y, x, ' ');
+                mvaddch(y+1, x, ' ');
             }
         }
     }
@@ -25,17 +25,29 @@ void drawMap(void)
 void drawEntity(Entity *entity)
 {
     if (entity->visible)
-        mvaddch(entity->pos.y, entity->pos.x, entity->ch | entity->color);
+        mvaddch(entity->pos.y+1, entity->pos.x, entity->ch | entity->color);
     else if (entity->seen)
-        mvaddch(entity->pos.y, entity->pos.x, entity->ch | COLOR_PAIR(SEEN_ITEM_COLOR));
+        mvaddch(entity->pos.y+1, entity->pos.x, entity->ch | COLOR_PAIR(SEEN_ITEM_COLOR));
 }
 
 void drawItems(void)
 {
-    for (int i = 0; i < MAX_ITEMS; i++)
+    for (int i = 0; i < TOTAL_ITEMS; i++)
     {
         drawEntity(items[i]);
     }
+}
+
+void drawUI(void)
+{
+    char ui[] = "rogue.c // HP: ";
+    int length = strlen(ui);
+    for (int i = 0; i < length; i++) 
+        mvaddch(0, i, ui[i] | COLOR_PAIR(UI_LABEL_COLOR));
+    attron(COLOR_PAIR(UI_VALUE_COLOR));
+    mvprintw(0, length, "%d/%d", player->HP, player->maxHP);
+    refresh();
+
 }
 
 void drawEverything(void)
@@ -44,4 +56,5 @@ void drawEverything(void)
     drawMap();
     drawItems();
     drawEntity(player);
+    drawUI();
 }
