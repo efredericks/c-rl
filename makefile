@@ -1,5 +1,7 @@
 CC = gcc
-CFLAGS = -lpanel -lncurses -lm -lSDL2 -I./include/
+# CFLAGS = -lpanel -lm -lraylib -I./include/
+# CFLAGS = -lpanel -lncurses -lm -lSDL2 -lraylib -I./include/
+CFLAGS = -lpanel -lncurses -lm -I./include/
 SOURCES = ./src/*.c
 
 all: rogue run clean

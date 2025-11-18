@@ -3,7 +3,7 @@
  */
 #include <rogue.h>
 #include <stdio.h>
-#include <SDL2/SDL.h>
+// #include <SDL2/SDL.h>
 
 const int MAP_HEIGHT = 25;
 const int MAP_WIDTH = 100;
