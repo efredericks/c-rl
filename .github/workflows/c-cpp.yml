@@ -13,8 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Set TERM environment variable
+      run: export TERM=xterm
+      shell: bash
     - name: Install ncurses development libraries
-      run: sudo apt-get update && sudo apt-get install -y libncurses-dev
+      run: sudo apt-get update && sudo apt-get install -y ncurses-base libncurses-dev
 #    - name: configure
 #      run: ./configure
     - name: make
